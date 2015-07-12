@@ -4,7 +4,7 @@ if (!isdirectory(expand("$HOME/.vim/bundle/neobundle.vim")))
   call system(expand("mkdir -p $HOME/.vim/bundle"))
   call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim"))
   let bundleExists = 0
-endif  
+endif
 
 " Note: Skip initialization for vim-tiny or vim-small.
  if 0 | endif
@@ -27,7 +27,7 @@ endif
   NeoBundleFetch 'Shougo/neobundle.vim'
 
  " start with a theme
-  NeoBundle 'sheerun/vim-wombat-scheme'
+  NeoBundle 'nanotech/jellybeans.vim'
 
  " add some async to your life
   NeoBundle 'Shougo/vimproc.vim', {
@@ -48,7 +48,7 @@ endif
   NeoBundleLazy 'othree/html5.vim',{'autoload':{'filetypes':['html']}}
   NeoBundleLazy 'JulesWang/css.vim',{'autoload':{'filetypes':['css']}}
 
-" better js completion 
+" better js completion
   NeoBundle 'marijnh/tern_for_vim', {
   \ 'autoload' : { 'filetypes' : 'javascript' },
   \   'build': {
@@ -57,7 +57,7 @@ endif
   \     'unix': 'npm install',
   \   },
   \ }
- 
+
 " Utils
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'scrooloose/syntastic'
@@ -81,7 +81,7 @@ endif
   set nowb
   set noswapfile
   set ic
-  set mouse=a  
+  set mouse=a
   set number
 " 2 space softabs default
   set expandtab
@@ -94,9 +94,8 @@ endif
   let g:vim_markdown_folding_disabled = 1
 
   syntax enable
-  set background=dark
-  colorscheme wombat
-
+  set background=light
+  colorscheme jellybeans
 
 " Be lazy, map ; to : for a better life
   nnoremap ; :
@@ -165,7 +164,7 @@ endif
 " disable powerline fonts, change to 1 if you want them
 " download them here https://github.com/powerline/fonts
   let g:airline_powerline_fonts = 0
-  let g:airline_theme='wombat'
+  let g:airline_theme='jellybeans'
 " make sure to escape the spaces in the name properly
 " Tabline part of vim-airline
   let g:airline#extensions#tabline#enabled = 1
