@@ -10,21 +10,22 @@
      |_|
 ```
 Portable text exiting for JS devs.
+Taken from [quick-vim](github.com/brianleroux/quick-vim)
 
 ![](quick-vim.png)
 
 ## usage
 
 ```bash
-    git clone https://github.com/mhartington/quick-vim.git
-    cd quick-vim
-    ./quick-vim install
+git clone https://github.com/mhartington/quick-vim.git
+cd quick-vim
+./quick-vim install
 ```
 
 You can reset to the default/previous vim env simply:
 
 ```bash
-    ./quick-vim uninstall
+./quick-vim uninstall
 ```
 
 And thats it.
