@@ -1,0 +1,85 @@
+#!/bin/sh
+
+# Originally from Brian Leroux's quick vim
+# https://github.com/brianleroux/quick-vim
+
+set -e
+
+help () {
+    cat<<EOF
+
+Usage: quick-vim [install|uninstall|help]
+
+Commands:
+    
+    install    installs from the git repo
+    uninstall  restores original system vim config
+    help       print this msg
+
+EOF
+}
+
+# backs default home vim up
+backup () {
+    if [ -e ./backup ]
+    then 
+        echo 'skipping backup'
+    else
+        mkdir -p ./backup
+        if [ -e ~/.vimrc ]
+        then
+            mv ~/.vimrc ./backup/.vimrc
+        fi
+        if [ -e ~/.vim ]
+        then
+            mv ~/.vim ./backup/.vim
+        fi
+     fi
+    echo "Backups are in ~/backup"
+}
+
+# Not much needed, we just need to cp the vimrc here to $HOME and NeoBundle will do its thing. 
+install () {
+    backup
+
+    # copy in vimrc and pathogen
+    cp ./vimrc ~/.vimrc
+    cp -r ./vim ~/.vim
+    echo "Neobundle will install plugins once you start vim"
+}
+
+# if backup exists clobbers home vim and copies in backup
+uninstall () {
+    if [ -e ./backup ]
+    then
+        rm ~/.vimrc
+        rm -rf ~/.vim
+        if [ -e ./backup/.vimrc ]
+        then
+            mv ./backup/.vimrc ~/.vimrc
+        fi
+        if [ -e ./backup/.vim ]
+        then
+            mv ./backup/.vim ~/.vim
+        fi
+        rm -rf ./backup
+    fi
+}
+
+
+# fucking cryptic bash, test for a valid arg and execute it if so; otherwise show the help
+if [ "$1" != "" ]; then
+    wl=(install uninstall upgrade help)
+    for i in "${wl[@]}"
+    do
+        if [ "$i" == "$1" ]
+        then
+            $1
+            exit 0
+        fi
+    done
+fi
+
+# show a flailer some help
+help 
+exit 0
