@@ -27,7 +27,7 @@ endif
   NeoBundleFetch 'Shougo/neobundle.vim'
 
  " start with a theme
-  NeoBundle 'notpratheek/vim-luna'
+  NeoBundle 'sheerun/vim-wombat-scheme'
 
  " add some async to your life
   NeoBundle 'Shougo/vimproc.vim', {
@@ -82,18 +82,21 @@ endif
   set noswapfile
   set ic
   set mouse=a  
-
-  " 2 space softabs default
+  set number
+" 2 space softabs default
   set expandtab
   set ts=2
   set sw=2
-
+  set wildmenu
+  set laststatus=2
+  set lazyredraw
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
 
   syntax enable
-  colorscheme luna
   set background=dark
+  colorscheme wombat
+
 
 " Be lazy, map ; to : for a better life
   nnoremap ; :
@@ -162,7 +165,7 @@ endif
 " disable powerline fonts, change to 1 if you want them
 " download them here https://github.com/powerline/fonts
   let g:airline_powerline_fonts = 0
-  let g:airline_theme='luna'
+  let g:airline_theme='wombat'
 " make sure to escape the spaces in the name properly
 " Tabline part of vim-airline
   let g:airline#extensions#tabline#enabled = 1
